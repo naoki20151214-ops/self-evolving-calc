@@ -1,14 +1,16 @@
 import subprocess
+import sys
 
 def run_tests():
     result = subprocess.run(
-        ["pytest"],
+        [sys.executable, "-m", "pytest", "-q"],
         capture_output=True,
         text=True
     )
-    return result.stdout + result.stderr
+    return result.returncode, (result.stdout + "\n" + result.stderr)
 
 if __name__ == "__main__":
-    output = run_tests()
+    code, out = run_tests()
     print("=== TEST OUTPUT ===")
-    print(output)
+    print(out)
+    raise SystemExit(code)
