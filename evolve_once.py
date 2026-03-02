@@ -4,7 +4,7 @@ from openai import OpenAI
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
-TARGET_FILE = "calc.py"
+TARGET_FILE = "src/calc.py"
 
 def evolve():
     # 現在のコードを読む
